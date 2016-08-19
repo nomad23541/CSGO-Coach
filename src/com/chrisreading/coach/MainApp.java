@@ -2,9 +2,12 @@ package com.chrisreading.coach;
 
 import java.io.IOException;
 
+import com.chrisreading.coach.view.CoachOverviewController;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
@@ -30,7 +33,8 @@ public class MainApp extends Application {
 		this.primaryStage.setTitle("Coach");
 		
 		initRootLayout();
-	}
+		showCoachOverview();
+	}	
 	
 	/**
 	 * Load & show the root scene
@@ -46,6 +50,27 @@ public class MainApp extends Application {
 			Scene scene = new Scene(rootLayout);
 			primaryStage.setScene(scene);
 			primaryStage.show();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	/**
+	 * Load & show the coach overview inside the root
+	 */
+	public void showCoachOverview() {
+		try {
+			// load overview
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(MainApp.class.getResource("view/CoachOverview.fxml"));
+			AnchorPane coachOverview = (AnchorPane) loader.load();
+			
+			// set coach overview to center of rootlayout
+			rootLayout.setCenter(coachOverview);
+			
+			// give controller access to MainApp
+			CoachOverviewController controller = loader.getController();
+			controller.setMainApp(this);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
