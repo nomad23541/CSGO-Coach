@@ -2,19 +2,35 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ButtonBar?>
-<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.chrisreading.coach.view.CoachOverviewController">
    <children>
-      <ScrollPane fx:id="taskDetailsPane" layoutX="327.0" layoutY="14.0" prefHeight="217.0" prefWidth="359.0" AnchorPane.leftAnchor="329.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="12.0" />
-      <ButtonBar layoutX="486.0" layoutY="446.0" prefHeight="40.0" prefWidth="200.0" AnchorPane.bottomAnchor="12.0" AnchorPane.rightAnchor="12.0">
+      <ButtonBar layoutX="486.0" layoutY="446.0" prefHeight="40.0" prefWidth="153.0" AnchorPane.bottomAnchor="12.0" AnchorPane.rightAnchor="12.0">
         <buttons>
           <Button fx:id="removeButton" mnemonicParsing="false" onAction="#handleRemove" text="Remove" />
             <Button fx:id="createButton" mnemonicParsing="false" onAction="#handleCreate" text="Create..." />
         </buttons>
       </ButtonBar>
-      <ScrollPane fx:id="taskCreationPane" layoutX="329.0" layoutY="240.0" prefHeight="202.0" prefWidth="359.0" AnchorPane.bottomAnchor="58.0" AnchorPane.leftAnchor="329.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="240.0" />
-      <ScrollPane fx:id="taskListPane" layoutX="14.0" layoutY="12.0" prefHeight="476.0" prefWidth="309.0" AnchorPane.bottomAnchor="12.0" AnchorPane.leftAnchor="12.0" AnchorPane.topAnchor="12.0" />
+      <ListView fx:id="taskList" layoutX="14.0" layoutY="12.0" prefHeight="576.0" prefWidth="303.0" AnchorPane.bottomAnchor="12.0" AnchorPane.leftAnchor="12.0" AnchorPane.topAnchor="12.0" />
+      <ListView fx:id="taskDragDropList" layoutX="338.0" layoutY="240.0" prefHeight="302.0" prefWidth="450.0" AnchorPane.bottomAnchor="58.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="240.0" />
+      <GridPane layoutX="338.0" layoutY="14.0" prefHeight="25.0" prefWidth="450.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="14.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label fx:id="detailTitle" text="title" />
+            <Label fx:id="detailDate" text="date" GridPane.columnIndex="1" />
+         </children>
+      </GridPane>
    </children>
 </AnchorPane>

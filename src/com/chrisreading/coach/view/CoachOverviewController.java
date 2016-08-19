@@ -1,9 +1,11 @@
 package com.chrisreading.coach.view;
 
 import com.chrisreading.coach.MainApp;
+import com.chrisreading.coach.model.Task;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
 import javafx.scene.control.ScrollPane;
 
 /**
@@ -16,11 +18,9 @@ public class CoachOverviewController {
 	
 	/** FXML */
 	@FXML
-	private ScrollPane taskListPane;
+	private ListView<Task> taskList;
 	@FXML
-	private ScrollPane taskDetailsPane;
-	@FXML
-	private ScrollPane taskCreationPane;
+	private ListView<Task> taskDragDropList;
 	@FXML
 	private Button createButton;
 	@FXML
@@ -46,7 +46,7 @@ public class CoachOverviewController {
 	 */
 	@FXML
 	private void handleCreate() {
-		System.out.println("create called");
+		
 	}
 	
 	/**
