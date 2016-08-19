@@ -5,17 +5,16 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.chrisreading.coach.view.CoachOverviewController">
    <children>
-      <ScrollPane fx:id="taskDetails" layoutX="327.0" layoutY="14.0" prefHeight="217.0" prefWidth="359.0" AnchorPane.leftAnchor="329.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="12.0" />
+      <ScrollPane fx:id="taskDetailsPane" layoutX="327.0" layoutY="14.0" prefHeight="217.0" prefWidth="359.0" AnchorPane.leftAnchor="329.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="12.0" />
       <ButtonBar layoutX="486.0" layoutY="446.0" prefHeight="40.0" prefWidth="200.0" AnchorPane.bottomAnchor="12.0" AnchorPane.rightAnchor="12.0">
         <buttons>
-          <Button fx:id="removeButton" mnemonicParsing="false" text="Remove" />
-            <Button fx:id="createButton" mnemonicParsing="false" text="Create..." />
+          <Button fx:id="removeButton" mnemonicParsing="false" onAction="#handleRemove" text="Remove" />
+            <Button fx:id="createButton" mnemonicParsing="false" onAction="#handleCreate" text="Create..." />
         </buttons>
       </ButtonBar>
-      <ScrollPane fx:id="taskCreation" layoutX="329.0" layoutY="240.0" prefHeight="202.0" prefWidth="359.0" AnchorPane.bottomAnchor="58.0" AnchorPane.leftAnchor="329.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="240.0" />
-      <ScrollPane fx:id="taskList" layoutX="14.0" layoutY="12.0" prefHeight="476.0" prefWidth="309.0" AnchorPane.bottomAnchor="12.0" AnchorPane.leftAnchor="12.0" AnchorPane.topAnchor="12.0" />
+      <ScrollPane fx:id="taskCreationPane" layoutX="329.0" layoutY="240.0" prefHeight="202.0" prefWidth="359.0" AnchorPane.bottomAnchor="58.0" AnchorPane.leftAnchor="329.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="240.0" />
+      <ScrollPane fx:id="taskListPane" layoutX="14.0" layoutY="12.0" prefHeight="476.0" prefWidth="309.0" AnchorPane.bottomAnchor="12.0" AnchorPane.leftAnchor="12.0" AnchorPane.topAnchor="12.0" />
    </children>
 </AnchorPane>
