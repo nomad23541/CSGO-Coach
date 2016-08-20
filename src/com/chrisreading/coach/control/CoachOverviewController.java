@@ -6,6 +6,7 @@ import com.chrisreading.coach.model.Task;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
@@ -27,6 +28,10 @@ public class CoachOverviewController {
 	private Button createButton;
 	@FXML
 	private Button removeButton;
+	@FXML
+	private Label detailTitle;
+	@FXML
+	private Label detailDate;
 	
 	/**
 	 * Constructor
@@ -41,10 +46,8 @@ public class CoachOverviewController {
 	@FXML
 	private void initialize() {
 		// temporary for testing
-		DeathmatchTask dt = new DeathmatchTask(4, 15);
-		DeathmatchTask dt2 = new DeathmatchTask(4, 23);
+		DeathmatchTask dt = new DeathmatchTask();
 		taskList.getItems().add(dt);
-		taskList.getItems().add(dt2);
 		
 		/**
 		 * Store tasks in the listviews but only show the
@@ -113,6 +116,16 @@ public class CoachOverviewController {
 			// now add that task to the done list
 			taskListDone.getItems().add(task);
 		}
+	}
+	
+	/**
+	 * Edit/Show details of task in grid pane
+	 */
+	public void onTaskListDoneClicked() {
+		Task task = taskListDone.getSelectionModel().getSelectedItem();
+		detailTitle.setText(task.getTitle());
+		detailDate.setText(task.getDate());
+		
 	}
 
 }
