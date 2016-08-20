@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="365.0" prefWidth="504.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ButtonBar layoutX="10.0" layoutY="311.0" prefHeight="40.0" prefWidth="480.0">
+        <buttons>
+            <Button fx:id="cancelButton" mnemonicParsing="false" text="Cancel" />
+          <Button fx:id="addButton" mnemonicParsing="false" text="Add" />
+        </buttons>
+      </ButtonBar>
+      <GridPane layoutX="14.0" layoutY="14.0" prefHeight="40.0" prefWidth="480.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+      </GridPane>
+      <ButtonBar layoutX="312.0" layoutY="271.0" prefHeight="40.0" prefWidth="182.0">
+        <buttons>
+          <Button fx:id="removeDetailButton" minWidth="39.0" mnemonicParsing="false" prefHeight="25.0" text="-" />
+            <Button fx:id="addDetailButton" mnemonicParsing="false" text="+" />
+        </buttons>
+      </ButtonBar>
+      <ListView fx:id="detailsList" layoutX="14.0" layoutY="14.0" prefHeight="251.0" prefWidth="480.0" />
+      <TextField fx:id="detailNameField" layoutX="180.0" layoutY="279.0" />
+      <Label layoutX="106.0" layoutY="283.0" text="Detail name:" />
+   </children>
+</AnchorPane>

@@ -2,8 +2,8 @@ package com.chrisreading.coach;
 
 import java.io.IOException;
 
+import com.chrisreading.coach.control.CoachOverviewController;
 import com.chrisreading.coach.model.Task;
-import com.chrisreading.coach.view.CoachOverviewController;
 
 import javafx.application.Application;
 import javafx.collections.FXCollections;
@@ -12,6 +12,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 /**
@@ -87,6 +88,31 @@ public class MainApp extends Application {
 			// give controller access to MainApp
 			CoachOverviewController controller = loader.getController();
 			controller.setMainApp(this);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	/**
+	 * Load & show the task create dialog
+	 */
+	public void showCreateTaskDialog() {
+		try {
+			// load the fxml file
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(MainApp.class.getResource("view/CreateTaskDialog.fxml"));
+			AnchorPane page = (AnchorPane) loader.load();
+					
+			// create the dialog stage
+			Stage dialogStage = new Stage();
+			dialogStage.setTitle("Create Task");
+			dialogStage.initModality(Modality.WINDOW_MODAL);
+			dialogStage.initOwner(primaryStage);
+			Scene scene = new Scene(page);
+			dialogStage.setScene(scene);
+			
+			// show the dialog and wait til the user closes it
+			dialogStage.showAndWait();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
