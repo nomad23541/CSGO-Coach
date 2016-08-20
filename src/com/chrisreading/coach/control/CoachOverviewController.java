@@ -1,4 +1,4 @@
-package com.chrisreading.coach.view;
+package com.chrisreading.coach.control;
 
 import com.chrisreading.coach.MainApp;
 import com.chrisreading.coach.model.Task;
@@ -46,7 +46,7 @@ public class CoachOverviewController {
 	 */
 	@FXML
 	private void handleCreate() {
-		
+		mainApp.showCreateTaskDialog();
 	}
 	
 	/**
