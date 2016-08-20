@@ -8,33 +8,28 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 /**
- * Task model
+ * Abstract task model for all tasks
  */
-public class Task {
+public abstract class Task {
 
 	/* Dummy data for testing model */
-	private StringProperty title;
-	private StringProperty date;
-	private DateFormat dateFormat;
-	private StringProperty detail1;
-	private StringProperty detail2;
+	protected StringProperty title;
+	protected StringProperty date;
 	
 	/**
 	 * Default constructor
 	 */
 	public Task() {
-		this(null, null, null);
+		this(null);
 	}
 	
 	/**
-	 * Constuctor with initial data
+	 * Constructor with initial data
 	 */
-	public Task(String title, String detail1, String detail2) {
+	public Task(String title) {
 		this.title = new SimpleStringProperty(title);
-		this.detail1 = new SimpleStringProperty(detail1);
-		this.detail2 = new SimpleStringProperty(detail2);
 		
-		dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+		DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
 		Date date = new Date();
 		this.date = new SimpleStringProperty(dateFormat.format(date));
 	}
