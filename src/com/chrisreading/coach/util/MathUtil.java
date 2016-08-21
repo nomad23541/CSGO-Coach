@@ -1,4 +1,4 @@
-package com.chrisreading.coach.control.util;
+package com.chrisreading.coach.util;
 
 /**
  * Utility class for handling all

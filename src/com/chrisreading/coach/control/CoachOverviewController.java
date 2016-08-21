@@ -1,9 +1,9 @@
 package com.chrisreading.coach.control;
 
 import com.chrisreading.coach.MainApp;
-import com.chrisreading.coach.control.util.MathUtil;
 import com.chrisreading.coach.model.DeathmatchTask;
 import com.chrisreading.coach.model.Task;
+import com.chrisreading.coach.util.MathUtil;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
