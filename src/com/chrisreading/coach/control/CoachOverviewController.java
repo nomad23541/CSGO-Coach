@@ -1,6 +1,7 @@
 package com.chrisreading.coach.control;
 
 import com.chrisreading.coach.MainApp;
+import com.chrisreading.coach.control.util.MathUtil;
 import com.chrisreading.coach.model.DeathmatchTask;
 import com.chrisreading.coach.model.Task;
 
@@ -133,14 +134,19 @@ public class CoachOverviewController {
 		if(task instanceof DeathmatchTask) {
 			Label killsLabel = new Label("Kills");
 			Label deathsLabel = new Label("Deaths");
+			Label kdRatioLabel = new Label("K/D");
 			Label detailKills = new Label(Integer.toString(((DeathmatchTask) task).getKills()));
 			Label detailDeaths = new Label(Integer.toString(((DeathmatchTask) task).getDeaths()));
+			Label detailKD = new Label(Double.toString(
+					MathUtil.getKDRatio(((DeathmatchTask) task).getKills(), ((DeathmatchTask) task).getDeaths())));
 
 			// add rows to the pane with this specific task
 			gridPane.add(killsLabel, 0, 2);
 			gridPane.add(deathsLabel, 0, 3);
+			gridPane.add(kdRatioLabel, 0, 4);
 			gridPane.add(detailKills, 1, 2);
 			gridPane.add(detailDeaths, 1, 3);
+			gridPane.add(detailKD, 1, 4);
 		}
 	}
 
