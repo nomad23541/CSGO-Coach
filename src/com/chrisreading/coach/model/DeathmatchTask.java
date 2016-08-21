@@ -25,8 +25,8 @@ public class DeathmatchTask extends Task {
 	public DeathmatchTask(int deaths, int kills) {
 		this.setTitle("Deathmatch"); // set title as this is a default task
 		
-		this.deaths = new SimpleIntegerProperty();
-		this.kills = new SimpleIntegerProperty();
+		this.deaths = new SimpleIntegerProperty(deaths);
+		this.kills = new SimpleIntegerProperty(kills);
 	}
 	
 	/**
