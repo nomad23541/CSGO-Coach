@@ -19,7 +19,7 @@
       </ButtonBar>
       <ListView fx:id="taskListDone" layoutX="14.0" layoutY="12.0" onMouseClicked="#onTaskListDoneClicked" prefHeight="576.0" prefWidth="303.0" AnchorPane.bottomAnchor="12.0" AnchorPane.leftAnchor="12.0" AnchorPane.topAnchor="12.0" />
       <ListView fx:id="taskList" layoutX="338.0" layoutY="240.0" onMouseClicked="#onTaskListClicked" prefHeight="302.0" prefWidth="450.0" AnchorPane.bottomAnchor="58.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="240.0" />
-      <GridPane layoutX="338.0" layoutY="14.0" prefHeight="25.0" prefWidth="450.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="14.0">
+      <GridPane fx:id="gridPane" layoutX="338.0" layoutY="14.0" prefHeight="25.0" prefWidth="450.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="14.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
