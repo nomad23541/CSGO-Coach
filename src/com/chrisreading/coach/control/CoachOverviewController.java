@@ -10,6 +10,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.GridPane;
 
 /**
  * Controller class for the CoachOverview
@@ -20,6 +21,8 @@ public class CoachOverviewController {
 	private MainApp mainApp;
 	
 	/** FXML */
+	@FXML
+	private GridPane gridPane;
 	@FXML
 	private ListView<Task> taskListDone;
 	@FXML
@@ -46,7 +49,7 @@ public class CoachOverviewController {
 	@FXML
 	private void initialize() {
 		// temporary for testing
-		DeathmatchTask dt = new DeathmatchTask();
+		DeathmatchTask dt = new DeathmatchTask(3, 16);
 		taskList.getItems().add(dt);
 		
 		/**
@@ -74,7 +77,7 @@ public class CoachOverviewController {
 				if(empty || item == null || item.getTitle() == null) {
 					setText(null);
 				} else {
-					setText(item.getTitle());
+					setText(item.getTitle() + " - " + item.getDate());
 				}
 			}
 		});
@@ -126,6 +129,19 @@ public class CoachOverviewController {
 		detailTitle.setText(task.getTitle());
 		detailDate.setText(task.getDate());
 		
+		/** temporary detection */
+		if(task instanceof DeathmatchTask) {
+			Label killsLabel = new Label("Kills");
+			Label deathsLabel = new Label("Deaths");
+			Label detailKills = new Label(Integer.toString(((DeathmatchTask) task).getKills()));
+			Label detailDeaths = new Label(Integer.toString(((DeathmatchTask) task).getDeaths()));
+
+			// add rows to the pane with this specific task
+			gridPane.add(killsLabel, 0, 2);
+			gridPane.add(deathsLabel, 0, 3);
+			gridPane.add(detailKills, 1, 2);
+			gridPane.add(detailDeaths, 1, 3);
+		}
 	}
 
 }
