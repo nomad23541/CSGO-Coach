@@ -17,4 +17,14 @@ public class MathUtil {
 		return (k + a) / Math.max(1, d);
 	}
 	
+	/**
+	 * Calculates the kpm kills / time
+	 * @param t time (minutes)
+	 * @param k kills
+	 * @return Solved kpm
+	 */
+	public static double calculateKPM(int k, int t) {
+		return (double) k / (double) t;
+	}
+	
 }
