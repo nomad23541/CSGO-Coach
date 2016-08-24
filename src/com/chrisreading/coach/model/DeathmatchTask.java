@@ -8,13 +8,13 @@ import javafx.beans.property.SimpleIntegerProperty;
  */
 public class DeathmatchTask extends Task {
 	
-	private IntegerProperty deaths, kills;
+	private IntegerProperty deaths, kills, assists;
 	
 	/**
 	 * Default Constructor
 	 */
 	public DeathmatchTask() {
-		this(0, 0);
+		this(0, 0, 0);
 	}
 	
 	/**
@@ -22,16 +22,25 @@ public class DeathmatchTask extends Task {
 	 * @param deaths
 	 * @param kills
 	 */
-	public DeathmatchTask(int deaths, int kills) {
+	public DeathmatchTask(int deaths, int kills, int assists) {
 		this.setTitle("Deathmatch"); // set title as this is a default task
 		
 		this.deaths = new SimpleIntegerProperty(deaths);
 		this.kills = new SimpleIntegerProperty(kills);
+		this.assists = new SimpleIntegerProperty(assists);
 	}
 	
 	/**
 	 * GETTER SETTERS
 	 */
+	
+	public void setAssists(int assists) {
+		this.assists.set(assists);
+	}
+	
+	public int getAssists() {
+		return assists.get();
+	}
 	
 	public void setDeaths(int deaths) {
 		this.deaths.set(deaths);

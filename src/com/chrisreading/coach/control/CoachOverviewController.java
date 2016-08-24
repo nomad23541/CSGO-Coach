@@ -50,7 +50,7 @@ public class CoachOverviewController {
 	@FXML
 	private void initialize() {
 		// temporary for testing
-		DeathmatchTask dt = new DeathmatchTask(3, 16);
+		DeathmatchTask dt = new DeathmatchTask(3, 16, 4);
 		taskList.getItems().add(dt);
 		
 		/**
@@ -132,21 +132,25 @@ public class CoachOverviewController {
 		
 		/** temporary detection */
 		if(task instanceof DeathmatchTask) {
+			Label assistsLabel = new Label("Assists");
 			Label killsLabel = new Label("Kills");
 			Label deathsLabel = new Label("Deaths");
 			Label kdRatioLabel = new Label("K/D");
+			Label detailAssists = new Label(Integer.toString(((DeathmatchTask) task).getAssists()));
 			Label detailKills = new Label(Integer.toString(((DeathmatchTask) task).getKills()));
 			Label detailDeaths = new Label(Integer.toString(((DeathmatchTask) task).getDeaths()));
 			Label detailKD = new Label(Double.toString(
-					MathUtil.getKDRatio(((DeathmatchTask) task).getKills(), ((DeathmatchTask) task).getDeaths())));
+					MathUtil.calculateKD(((DeathmatchTask) task).getKills(), ((DeathmatchTask) task).getDeaths(), ((DeathmatchTask) task).getAssists())));
 
 			// add rows to the pane with this specific task
 			gridPane.add(killsLabel, 0, 2);
 			gridPane.add(deathsLabel, 0, 3);
-			gridPane.add(kdRatioLabel, 0, 4);
+			gridPane.add(assistsLabel, 0, 4);
+			gridPane.add(kdRatioLabel, 0, 5);
 			gridPane.add(detailKills, 1, 2);
 			gridPane.add(detailDeaths, 1, 3);
-			gridPane.add(detailKD, 1, 4);
+			gridPane.add(detailAssists, 1, 4);
+			gridPane.add(detailKD, 1, 5);
 		}
 	}
 
