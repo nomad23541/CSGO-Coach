@@ -50,7 +50,7 @@ public class CoachOverviewController {
 	@FXML
 	private void initialize() {
 		// temporary for testing
-		DeathmatchTask dt = new DeathmatchTask(3, 16, 4);
+		DeathmatchTask dt = new DeathmatchTask();
 		taskList.getItems().add(dt);
 		
 		/**
