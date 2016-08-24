@@ -117,8 +117,15 @@ public class CoachOverviewController {
 		// if 2 clicks
 		if(event.getClickCount() == 2) {
 			Task task = taskList.getSelectionModel().getSelectedItem();
+			
+			boolean addClicked = false;
+			if(task instanceof DeathmatchTask) {
+				addClicked = mainApp.showAddDeathmatchDialog((DeathmatchTask) task);
+			}
+			
 			// now add that task to the done list
-			taskListDone.getItems().add(task);
+			if(addClicked)
+				taskListDone.getItems().add(task);
 		}
 	}
 	
@@ -135,22 +142,37 @@ public class CoachOverviewController {
 			Label assistsLabel = new Label("Assists");
 			Label killsLabel = new Label("Kills");
 			Label deathsLabel = new Label("Deaths");
+			Label gunLabel = new Label("Gun");
+			Label timeLabel = new Label("Time");
+			Label kpmLabel = new Label("KPM");
 			Label kdRatioLabel = new Label("K/D");
+			
+			Label detailTime = new Label(((DeathmatchTask) task).getTime());
+			Label detailGun = new Label(((DeathmatchTask) task).getGun());
 			Label detailAssists = new Label(Integer.toString(((DeathmatchTask) task).getAssists()));
 			Label detailKills = new Label(Integer.toString(((DeathmatchTask) task).getKills()));
 			Label detailDeaths = new Label(Integer.toString(((DeathmatchTask) task).getDeaths()));
 			Label detailKD = new Label(Double.toString(
 					MathUtil.calculateKD(((DeathmatchTask) task).getKills(), ((DeathmatchTask) task).getDeaths(), ((DeathmatchTask) task).getAssists())));
+			Label detailKPM = new Label(Double.toString(MathUtil.calculateKPM(Integer.parseInt(((DeathmatchTask) task).getTime()), ((DeathmatchTask) task).getKills())));
+			
+			System.out.println(Double.toString(MathUtil.calculateKPM(Integer.parseInt(((DeathmatchTask) task).getTime()), ((DeathmatchTask) task).getKills())));
 
 			// add rows to the pane with this specific task
-			gridPane.add(killsLabel, 0, 2);
-			gridPane.add(deathsLabel, 0, 3);
-			gridPane.add(assistsLabel, 0, 4);
-			gridPane.add(kdRatioLabel, 0, 5);
-			gridPane.add(detailKills, 1, 2);
-			gridPane.add(detailDeaths, 1, 3);
-			gridPane.add(detailAssists, 1, 4);
-			gridPane.add(detailKD, 1, 5);
+			gridPane.add(gunLabel, 0, 2);
+			gridPane.add(detailGun, 1, 2);
+			gridPane.add(killsLabel, 0, 3);
+			gridPane.add(detailKills, 1, 3);
+			gridPane.add(deathsLabel, 0, 4);
+			gridPane.add(detailDeaths, 1, 4);
+			gridPane.add(assistsLabel, 0, 5);
+			gridPane.add(detailAssists, 1, 5);
+			gridPane.add(kdRatioLabel, 0, 6);
+			gridPane.add(detailKD, 1, 6);
+			gridPane.add(timeLabel, 0, 7);
+			gridPane.add(detailTime, 1, 7);
+			gridPane.add(kpmLabel, 0, 8);
+			gridPane.add(detailKPM, 1, 8);
 		}
 	}
 
