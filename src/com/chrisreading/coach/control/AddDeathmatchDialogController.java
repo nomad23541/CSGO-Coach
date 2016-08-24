@@ -6,6 +6,7 @@ import com.chrisreading.coach.model.DeathmatchTask;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 /**
  * Controller class for the CoachOverview
@@ -17,6 +18,11 @@ public class AddDeathmatchDialogController {
 	
 	/** Task being added */
 	private DeathmatchTask task;
+	
+	/** Stage for this dialog */
+	private Stage dialogStage;
+	
+	private boolean addClicked = false;
 	
 	/** FXML */
 	@FXML
@@ -37,8 +43,8 @@ public class AddDeathmatchDialogController {
 	/**
 	 * Constructor
 	 */
-	public AddDeathmatchDialogController(DeathmatchTask task) {
-		this.task = task;
+	public AddDeathmatchDialogController() {
+		
 	}
 	
 	/**
@@ -54,7 +60,14 @@ public class AddDeathmatchDialogController {
 	 */
 	@FXML
 	private void handleAdd() {
-
+		task.setKills(Integer.parseInt(killsField.getText()));
+		task.setAssists(Integer.parseInt(assistsField.getText()));
+		task.setDeaths(Integer.parseInt(deathsField.getText()));
+		task.setGun(gunField.getText());
+		task.setTime(timeField.getText());
+		
+		addClicked = true;
+		dialogStage.close();
 	}
 	
 	/**
@@ -62,7 +75,7 @@ public class AddDeathmatchDialogController {
 	 */
 	@FXML
 	private void handleCancel() {
-
+		dialogStage.close();
 	}
 	
 	/**
@@ -72,6 +85,17 @@ public class AddDeathmatchDialogController {
 	public void setMainApp(MainApp mainApp) {
 		this.mainApp = mainApp;
 	}
+	
+	public void setDeathmatch(DeathmatchTask task) {
+		this.task = task;
+	}
+	
+	public void setDialogStage(Stage stage) {
+		this.dialogStage = stage;
+	}
+	
+	public boolean isAddClicked() {
+		return addClicked;
+	}
 
 }
-
