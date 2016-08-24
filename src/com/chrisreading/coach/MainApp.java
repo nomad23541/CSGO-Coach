@@ -2,7 +2,9 @@ package com.chrisreading.coach;
 
 import java.io.IOException;
 
+import com.chrisreading.coach.control.AddDeathmatchDialogController;
 import com.chrisreading.coach.control.CoachOverviewController;
+import com.chrisreading.coach.model.DeathmatchTask;
 import com.chrisreading.coach.model.Task;
 
 import javafx.application.Application;
@@ -117,6 +119,39 @@ public class MainApp extends Application {
 			dialogStage.showAndWait();
 		} catch (IOException e) {
 			e.printStackTrace();
+		}
+	}
+	
+	/**
+	 * Load & show the add deathmatch dialog
+	 */
+	public boolean showAddDeathmatchDialog(DeathmatchTask task) {
+		try {
+			// load the fxml file
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(MainApp.class.getResource("view/AddDeathmatchDialog.fxml"));
+			AnchorPane page = (AnchorPane) loader.load();
+					
+			// create the dialog stage
+			Stage dialogStage = new Stage();
+			dialogStage.setTitle("Add Deathmatch");
+			dialogStage.initModality(Modality.WINDOW_MODAL);
+			dialogStage.initOwner(primaryStage);
+			Scene scene = new Scene(page);
+			dialogStage.setScene(scene);
+			
+			// set the controller
+			AddDeathmatchDialogController controller = loader.getController();
+			controller.setDialogStage(dialogStage);
+			controller.setDeathmatch(task);
+			
+			// show the dialog and wait til the user closes it
+			dialogStage.showAndWait();
+			
+			return controller.isAddClicked();
+		} catch (IOException e) {
+			e.printStackTrace();
+			return false;
 		}
 	}
 	
