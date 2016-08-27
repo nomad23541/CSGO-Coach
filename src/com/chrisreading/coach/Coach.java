@@ -21,7 +21,7 @@ import javafx.stage.Stage;
 /**
  * Main class for coach
  */
-public class MainApp extends Application {
+public class Coach extends Application {
 
 	private Stage primaryStage;
 	private BorderPane rootLayout;
@@ -63,12 +63,12 @@ public class MainApp extends Application {
 		try {
 			// load rootlayout from it's file
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(MainApp.class.getResource("view/RootLayout.fxml"));
+			loader.setLocation(Coach.class.getResource("view/RootLayout.fxml"));
 			rootLayout = (BorderPane) loader.load();
 			
 			// show the scene containing rootlayout
 			Scene scene = new Scene(rootLayout);
-			primaryStage.getIcons().add(new Image(MainApp.class.getResourceAsStream("/res/icon.png")));
+			primaryStage.getIcons().add(new Image(Coach.class.getResourceAsStream("/res/icon.png")));
 			primaryStage.setScene(scene);
 			primaryStage.show();
 		} catch (IOException e) {
@@ -83,7 +83,7 @@ public class MainApp extends Application {
 		try {
 			// load overview
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(MainApp.class.getResource("view/CoachOverview.fxml"));
+			loader.setLocation(Coach.class.getResource("view/CoachOverview.fxml"));
 			AnchorPane coachOverview = (AnchorPane) loader.load();
 			
 			// set coach overview to center of rootlayout
@@ -104,7 +104,7 @@ public class MainApp extends Application {
 		try {
 			// load the fxml file
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(MainApp.class.getResource("view/CreateTaskDialog.fxml"));
+			loader.setLocation(Coach.class.getResource("view/CreateTaskDialog.fxml"));
 			AnchorPane page = (AnchorPane) loader.load();
 					
 			// create the dialog stage
@@ -129,7 +129,7 @@ public class MainApp extends Application {
 		try {
 			// load the fxml file
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(MainApp.class.getResource("view/AddDeathmatchDialog.fxml"));
+			loader.setLocation(Coach.class.getResource("view/AddDeathmatchDialog.fxml"));
 			AnchorPane page = (AnchorPane) loader.load();
 					
 			// create the dialog stage

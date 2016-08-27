@@ -1,6 +1,6 @@
 package com.chrisreading.coach.control;
 
-import com.chrisreading.coach.MainApp;
+import com.chrisreading.coach.Coach;
 import com.chrisreading.coach.model.DeathmatchTask;
 
 import javafx.fxml.FXML;
@@ -14,7 +14,7 @@ import javafx.stage.Stage;
 public class AddDeathmatchDialogController {
 	
 	/** Reference to the main class */
-	private MainApp mainApp;
+	private Coach mainApp;
 	
 	/** Task being added */
 	private DeathmatchTask task;
@@ -82,7 +82,7 @@ public class AddDeathmatchDialogController {
 	 * Sets the main app, make it accessible for this class
 	 * @param mainApp
 	 */
-	public void setMainApp(MainApp mainApp) {
+	public void setMainApp(Coach mainApp) {
 		this.mainApp = mainApp;
 	}
 	

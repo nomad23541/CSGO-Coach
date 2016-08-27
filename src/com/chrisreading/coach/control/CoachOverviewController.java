@@ -1,6 +1,6 @@
 package com.chrisreading.coach.control;
 
-import com.chrisreading.coach.MainApp;
+import com.chrisreading.coach.Coach;
 import com.chrisreading.coach.model.DeathmatchTask;
 import com.chrisreading.coach.model.Task;
 import com.chrisreading.coach.util.MathUtil;
@@ -19,7 +19,7 @@ import javafx.scene.layout.GridPane;
 public class CoachOverviewController {
 	
 	/** Reference to the main class */
-	private MainApp mainApp;
+	private Coach mainApp;
 	
 	/** FXML */
 	@FXML
@@ -104,7 +104,7 @@ public class CoachOverviewController {
 	 * Sets the main app, make it accessible for this class
 	 * @param mainApp
 	 */
-	public void setMainApp(MainApp mainApp) {
+	public void setMainApp(Coach mainApp) {
 		this.mainApp = mainApp;
 	}
 	
