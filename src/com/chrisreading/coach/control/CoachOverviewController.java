@@ -2,16 +2,24 @@ package com.chrisreading.coach.control;
 
 import com.chrisreading.coach.Coach;
 import com.chrisreading.coach.model.DeathmatchTask;
+import com.chrisreading.coach.model.GrenadeTrainingTask;
 import com.chrisreading.coach.model.Task;
 import com.chrisreading.coach.util.MathUtil;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.Group;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 /**
  * Controller class for the CoachOverview
@@ -49,9 +57,9 @@ public class CoachOverviewController {
 	 */
 	@FXML
 	private void initialize() {
-		// temporary for testing
-		DeathmatchTask dt = new DeathmatchTask();
-		taskList.getItems().add(dt);
+		// add skeleton tasks to the list for use
+		taskList.getItems().add(new DeathmatchTask());
+		taskList.getItems().add(new GrenadeTrainingTask());
 		
 		/**
 		 * Store tasks in the listviews but only show the
@@ -118,13 +126,15 @@ public class CoachOverviewController {
 		if(event.getClickCount() == 2) {
 			Task task = taskList.getSelectionModel().getSelectedItem();
 			
-			boolean addClicked = false;
+			boolean okClicked = false;
 			if(task instanceof DeathmatchTask) {
-				addClicked = mainApp.showAddDeathmatchDialog((DeathmatchTask) task);
+				okClicked = mainApp.showAddDeathmatchDialog((DeathmatchTask) task);
+			} else if(task instanceof GrenadeTrainingTask) {
+				okClicked = mainApp.showAddGrenadeTrainingDialog((GrenadeTrainingTask) task);
 			}
 			
 			// now add that task to the done list
-			if(addClicked)
+			if(okClicked)
 				taskListDone.getItems().add(task);
 		}
 	}
@@ -138,7 +148,14 @@ public class CoachOverviewController {
 		detailDate.setText(task.getDate());
 		
 		/** temporary detection */
-		if(task instanceof DeathmatchTask) {
+		if(task instanceof DeathmatchTask) {	
+			gridPane.getChildren().clear();
+			
+			Label title = new Label("Deathmatch");
+			Label date = new Label(task.getDate());
+			gridPane.add(title, 0, 0);
+			gridPane.add(date, 1, 0);
+			
 			Label assistsLabel = new Label("Assists");
 			Label killsLabel = new Label("Kills");
 			Label deathsLabel = new Label("Deaths");
@@ -173,6 +190,55 @@ public class CoachOverviewController {
 			gridPane.add(detailTime, 1, 7);
 			gridPane.add(kpmLabel, 0, 8);
 			gridPane.add(detailKPM, 1, 8);
+		} else if(task instanceof GrenadeTrainingTask) {
+			gridPane.getChildren().clear();
+			
+			Label title = new Label("Grenade Training");
+			Label date = new Label(task.getDate());
+			gridPane.add(title, 0, 0);
+			gridPane.add(date, 1, 0);
+			
+			Label mapLabel = new Label("Map");
+			Label nadeLabel = new Label("Grenade");
+			Label scoreALabel = new Label("1st Score");
+			Label scoreBLabel = new Label("2nd Score");
+			
+			Label detailMap = new Label(((GrenadeTrainingTask) task).getMap());
+			Label detailNade = new Label(((GrenadeTrainingTask) task).getGrenade());
+			Label detailScoreA = new Label(((GrenadeTrainingTask) task).getScoreATop() + "/" + ((GrenadeTrainingTask) task).getScoreABot());
+			Label detailScoreB = new Label(((GrenadeTrainingTask) task).getScoreBTop() + "/" + ((GrenadeTrainingTask) task).getScoreBBot());
+			
+			ImageView imageView = new ImageView(((GrenadeTrainingTask) task).getImage());
+			imageView.setFitHeight(100.0);
+			imageView.setFitWidth(100.0);
+			Button imageButton = new Button("View Image");
+			
+			imageButton.setOnAction(new EventHandler<ActionEvent>() {
+				@Override
+				public void handle(ActionEvent event) {
+					Stage dialog = new Stage();
+					dialog.setResizable(false);
+					dialog.initStyle(StageStyle.UTILITY);
+					ImageView iv = new ImageView(((GrenadeTrainingTask) task).getImage());
+					iv.setFitHeight(iv.getImage().getHeight() / 2);
+					iv.setFitWidth(iv.getImage().getWidth() / 2);
+					Scene scene = new Scene(new Group(iv));
+					dialog.setScene(scene);
+					dialog.show();
+				}
+				
+			});
+			
+			gridPane.add(mapLabel, 0, 2);
+			gridPane.add(detailMap, 1, 2);
+			gridPane.add(nadeLabel, 0, 3);
+			gridPane.add(detailNade, 1, 3);
+			gridPane.add(scoreALabel, 0, 4);
+			gridPane.add(detailScoreA, 1, 4);
+			gridPane.add(scoreBLabel, 0, 5);
+			gridPane.add(detailScoreB, 1, 5);
+			gridPane.add(imageView, 0, 6);
+			gridPane.add(imageButton, 1, 6);
 		}
 	}
 
