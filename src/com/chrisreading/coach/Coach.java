@@ -3,8 +3,10 @@ package com.chrisreading.coach;
 import java.io.IOException;
 
 import com.chrisreading.coach.control.AddDeathmatchDialogController;
+import com.chrisreading.coach.control.AddGrenadeTrainingDialogController;
 import com.chrisreading.coach.control.CoachOverviewController;
 import com.chrisreading.coach.model.DeathmatchTask;
+import com.chrisreading.coach.model.GrenadeTrainingTask;
 import com.chrisreading.coach.model.Task;
 
 import javafx.application.Application;
@@ -142,6 +144,39 @@ public class Coach extends Application {
 			
 			// set the controller
 			AddDeathmatchDialogController controller = loader.getController();
+			controller.setDialogStage(dialogStage);
+			controller.setTask(task);
+			
+			// show the dialog and wait til the user closes it
+			dialogStage.showAndWait();
+			
+			return controller.isOkClicked();
+		} catch (IOException e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+	
+	/**
+	 * Load & show the add grenade training dialog
+	 */
+	public boolean showAddGrenadeTrainingDialog(GrenadeTrainingTask task) {
+		try {
+			// load the fxml file
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(Coach.class.getResource("view/AddGrenadeTrainingDialog.fxml"));
+			AnchorPane page = (AnchorPane) loader.load();
+					
+			// create the dialog stage
+			Stage dialogStage = new Stage();
+			dialogStage.setTitle("Add Grenade Training");
+			dialogStage.initModality(Modality.WINDOW_MODAL);
+			dialogStage.initOwner(primaryStage);
+			Scene scene = new Scene(page);
+			dialogStage.setScene(scene);
+			
+			// set the controller
+			AddGrenadeTrainingDialogController controller = loader.getController();
 			controller.setDialogStage(dialogStage);
 			controller.setTask(task);
 			
