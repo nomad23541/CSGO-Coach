@@ -6,7 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 
 /**
- * Controller class for the CoachOverview
+ * Controller class for the Deathmatch Dialog
  */
 public class AddDeathmatchDialogController extends DialogController {
 	
