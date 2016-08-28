@@ -22,7 +22,7 @@ public class AddDeathmatchDialogController {
 	/** Stage for this dialog */
 	private Stage dialogStage;
 	
-	private boolean addClicked = false;
+	private boolean okClicked = false;
 	
 	/** FXML */
 	@FXML
@@ -66,7 +66,7 @@ public class AddDeathmatchDialogController {
 		task.setGun(gunField.getText());
 		task.setTime(timeField.getText());
 		
-		addClicked = true;
+		okClicked = true;
 		dialogStage.close();
 	}
 	
@@ -94,8 +94,8 @@ public class AddDeathmatchDialogController {
 		this.dialogStage = stage;
 	}
 	
-	public boolean isAddClicked() {
-		return addClicked;
+	public boolean isOkClicked() {
+		return okClicked;
 	}
 
 }

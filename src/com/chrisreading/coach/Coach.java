@@ -148,7 +148,7 @@ public class Coach extends Application {
 			// show the dialog and wait til the user closes it
 			dialogStage.showAndWait();
 			
-			return controller.isAddClicked();
+			return controller.isOkClicked();
 		} catch (IOException e) {
 			e.printStackTrace();
 			return false;
