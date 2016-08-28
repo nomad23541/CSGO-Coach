@@ -24,7 +24,7 @@ public class MathUtil {
 	 * @return Solved kpm
 	 */
 	public static double calculateKPM(int k, int t) {
-		return (double) k / (double) t;
+		return (double) t / (double) k;
 	}
 	
 }
