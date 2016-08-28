@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="438.0" prefWidth="395.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.chrisreading.coach.control.AddGrenadeTrainingDialogController">
+   <children>
+      <Label layoutX="14.0" layoutY="14.0" text="Enter the details for this task:" />
+      <ButtonBar layoutX="11.0" layoutY="384.0" prefHeight="40.0" prefWidth="374.0">
+        <buttons>
+          <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#handleCancel" text="Cancel" />
+            <Button fx:id="okButton" mnemonicParsing="false" onAction="#handleOk" text="Add" />
+        </buttons>
+      </ButtonBar>
+      <GridPane layoutX="21.0" layoutY="41.0" prefHeight="77.0" prefWidth="374.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="182.0" minWidth="10.0" prefWidth="110.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="317.0" minWidth="10.0" prefWidth="135.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="317.0" minWidth="10.0" prefWidth="170.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="66.0" minHeight="10.0" prefHeight="48.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <ComboBox fx:id="mapComboBox" prefWidth="150.0" GridPane.columnIndex="1" />
+            <Label text="Map:" GridPane.halignment="CENTER" />
+            <Label text="Grenade:" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+            <ComboBox fx:id="nadeComboBox" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+         </children>
+      </GridPane>
+      <GridPane layoutX="11.0" layoutY="129.0" prefHeight="77.0" prefWidth="374.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="88.0" minWidth="10.0" prefWidth="58.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="160.0" minWidth="3.0" prefWidth="16.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="223.0" minWidth="10.0" prefWidth="202.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label text="1st Score:" GridPane.halignment="CENTER" />
+            <TextField fx:id="scoreATop" prefHeight="25.0" prefWidth="80.0" GridPane.columnIndex="1" />
+            <TextField fx:id="scoreABot" maxWidth="-Infinity" prefHeight="25.0" prefWidth="56.0" GridPane.columnIndex="3" />
+            <Label text="/" GridPane.columnIndex="2" GridPane.halignment="CENTER" />
+            <Label text="2nd Score:" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+            <TextField fx:id="scoreBTop" prefHeight="25.0" prefWidth="80.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+            <Label text="/" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+            <TextField fx:id="scoreBBot" maxWidth="-Infinity" prefHeight="25.0" prefWidth="56.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+         </children>
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </GridPane>
+      <GridPane layoutX="21.0" layoutY="219.0" prefHeight="40.0" prefWidth="356.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="114.0" minWidth="10.0" prefWidth="71.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="167.0" minWidth="10.0" prefWidth="167.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label text="Attach image:" GridPane.halignment="CENTER" />
+            <TextField fx:id="imageLocField" prefHeight="25.0" prefWidth="151.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+            <Button fx:id="attachButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" text="Attach" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+         </children>
+      </GridPane>
+   </children>
+</AnchorPane>
