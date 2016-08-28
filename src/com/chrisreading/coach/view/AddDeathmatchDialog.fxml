@@ -40,7 +40,7 @@
       <ButtonBar layoutX="11.0" layoutY="384.0" prefHeight="40.0" prefWidth="374.0">
         <buttons>
           <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#handleCancel" text="Cancel" />
-            <Button fx:id="addButton" mnemonicParsing="false" onAction="#handleAdd" text="Add" />
+            <Button fx:id="okButton" mnemonicParsing="false" onAction="#handleOk" text="Add" />
         </buttons>
       </ButtonBar>
    </children>

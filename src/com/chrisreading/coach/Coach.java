@@ -143,7 +143,7 @@ public class Coach extends Application {
 			// set the controller
 			AddDeathmatchDialogController controller = loader.getController();
 			controller.setDialogStage(dialogStage);
-			controller.setDeathmatch(task);
+			controller.setTask(task);
 			
 			// show the dialog and wait til the user closes it
 			dialogStage.showAndWait();

@@ -1,28 +1,14 @@
 package com.chrisreading.coach.control;
 
-import com.chrisreading.coach.Coach;
 import com.chrisreading.coach.model.DeathmatchTask;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 
 /**
  * Controller class for the CoachOverview
  */
-public class AddDeathmatchDialogController {
-	
-	/** Reference to the main class */
-	private Coach mainApp;
-	
-	/** Task being added */
-	private DeathmatchTask task;
-	
-	/** Stage for this dialog */
-	private Stage dialogStage;
-	
-	private boolean okClicked = false;
+public class AddDeathmatchDialogController extends DialogController {
 	
 	/** FXML */
 	@FXML
@@ -35,36 +21,24 @@ public class AddDeathmatchDialogController {
 	private TextField deathsField;
 	@FXML
 	private TextField assistsField;
-	@FXML
-	private Button addButton;
-	@FXML
-	private Button cancelButton;
-	
-	/**
-	 * Constructor
-	 */
-	public AddDeathmatchDialogController() {
-		
-	}
-	
-	/**
-	 * Called before the constructor
-	 */
-	@FXML
-	private void initialize() {
 
+	public AddDeathmatchDialogController() {}
+
+	@FXML
+	protected void initialize() {
+		task = new DeathmatchTask();
 	}
 	
 	/**
 	 * Called on press of add button
 	 */
 	@FXML
-	private void handleAdd() {
-		task.setKills(Integer.parseInt(killsField.getText()));
-		task.setAssists(Integer.parseInt(assistsField.getText()));
-		task.setDeaths(Integer.parseInt(deathsField.getText()));
-		task.setGun(gunField.getText());
-		task.setTime(timeField.getText());
+	protected void handleOk() {
+		((DeathmatchTask) task).setKills(Integer.parseInt(killsField.getText()));
+		((DeathmatchTask) task).setAssists(Integer.parseInt(assistsField.getText()));
+		((DeathmatchTask) task).setDeaths(Integer.parseInt(deathsField.getText()));
+		((DeathmatchTask) task).setGun(gunField.getText());
+		((DeathmatchTask) task).setTime(timeField.getText());
 		
 		okClicked = true;
 		dialogStage.close();
@@ -74,28 +48,7 @@ public class AddDeathmatchDialogController {
 	 * Called on press of cancel button
 	 */
 	@FXML
-	private void handleCancel() {
+	protected void handleCancel() {
 		dialogStage.close();
 	}
-	
-	/**
-	 * Sets the main app, make it accessible for this class
-	 * @param mainApp
-	 */
-	public void setMainApp(Coach mainApp) {
-		this.mainApp = mainApp;
-	}
-	
-	public void setDeathmatch(DeathmatchTask task) {
-		this.task = task;
-	}
-	
-	public void setDialogStage(Stage stage) {
-		this.dialogStage = stage;
-	}
-	
-	public boolean isOkClicked() {
-		return okClicked;
-	}
-
 }
