@@ -1,25 +1,19 @@
 package com.chrisreading.coach.control;
 
 import com.chrisreading.coach.Coach;
+import com.chrisreading.coach.handler.GridPaneNodeHandler;
 import com.chrisreading.coach.model.DeathmatchTask;
 import com.chrisreading.coach.model.GrenadeTrainingTask;
 import com.chrisreading.coach.model.Task;
 import com.chrisreading.coach.util.MathUtil;
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.scene.Group;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 /**
  * Controller class for the CoachOverview
@@ -198,6 +192,21 @@ public class CoachOverviewController {
 			gridPane.add(title, 0, 0);
 			gridPane.add(date, 1, 0);
 			
+			GridPaneNodeHandler gpnh = new GridPaneNodeHandler(gridPane);
+			gpnh.addNodes(new String[] {"Map", "Grenade", "1st Score", "2nd Score"},
+				new String[] {
+						((GrenadeTrainingTask) task).getMap(), ((GrenadeTrainingTask) task).getGrenade(),
+						((GrenadeTrainingTask) task).getScoreATop() + "/" + ((GrenadeTrainingTask) task).getScoreABot(),
+						((GrenadeTrainingTask) task).getScoreBTop() + "/" + ((GrenadeTrainingTask) task).getScoreBBot()
+			});
+			
+			/*
+			
+			Label title = new Label("Grenade Training");
+			Label date = new Label(task.getDate());
+			gridPane.add(title, 0, 0);
+			gridPane.add(date, 1, 0);
+			
 			Label mapLabel = new Label("Map");
 			Label nadeLabel = new Label("Grenade");
 			Label scoreALabel = new Label("1st Score");
@@ -239,6 +248,7 @@ public class CoachOverviewController {
 			gridPane.add(detailScoreB, 1, 5);
 			gridPane.add(imageView, 0, 6);
 			gridPane.add(imageButton, 1, 6);
+			*/
 		}
 	}
 
